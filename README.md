@@ -8,7 +8,8 @@ How to test:
 
       (Postman Request Example)
 
-       1.1 Generate Access Token:
+      1.1 Generate Access Token:
+      
       curl --location --request POST 'localhost:8081/oauth/token' \
       --header 'Authorization: Basic c2Nob29sY2xpZW50OnNjaG9vbDEyMw==' \
       --header 'Content-Type: application/x-www-form-urlencoded' \
