@@ -3,6 +3,7 @@ package lab.lhss.shcoolauthserver.core.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -18,6 +19,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
@@ -26,9 +30,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory()
                 .withClient("schoolclient")
                     .secret(passwordEncoder.encode("school123"))
-                    .authorizedGrantTypes("password")
+                    .authorizedGrantTypes("password", "refresh_token")
                     .scopes("write", "read")
-                    .accessTokenValiditySeconds(60 * 60 * 6)
+                    .accessTokenValiditySeconds(20)
                     .and()
                 .withClient("checktoken")
                     .secret(passwordEncoder.encode("check123"));
@@ -44,6 +48,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         // Only for Password Flow, to analyze Resource Owner credentials
-        endpoints.authenticationManager(authenticationManager);
+        endpoints
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService);
     }
 }
