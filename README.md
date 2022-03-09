@@ -4,7 +4,7 @@ Learning and Testing Oauth2 Grant Types with Spring Security.
 
 How to test:
 
-1. Password Credentials Flow
+<h1>1. Password Credentials Flow</h1>
 
       (Postman Request Example)
 
@@ -22,11 +22,8 @@ How to test:
       curl --location --request GET 'localhost:8080/student/1' \
       --header 'Authorization: Bearer 678b9134-67cc-4963-951b-35ea22737340'
 
-Configuring Refresh Token Grant Type with Password Grant Type
 
-We have configured Refresh Token Grant Type with Password Grant Type.
-
-2. Password Grant Type with Refresh Token Grant Type
+<h1>2. Password Grant Type with Refresh Token Grant Type</h1>
 
       2.1 Generate Access Token (Postman Request Example):
       curl --location --request POST 'localhost:8081/oauth/token' \
@@ -51,3 +48,13 @@ We have configured Refresh Token Grant Type with Password Grant Type.
       --data-urlencode 'grant_type=refresh_token'
 
       2.4 Now with new Access Token make requests again until it expires.
+
+
+<h1>3. Configuring Client Credentials Grant Type</h1>
+
+      3.1 Request Example:
+            curl --location --request POST 'localhost:8081/oauth/token' \
+            --header 'Authorization: Basic YmFja2VuZC1jbGllbnQ6YmFja2VuZGNsaWVudDEyMw==' \
+            --header 'Content-Type: application/x-www-form-urlencoded' \
+            --header 'Cookie: JSESSIONID=34C10FDEBCEF3F916FC3ED950F4E08D6' \
+            --data-urlencode 'grant_type=client_credentials'
