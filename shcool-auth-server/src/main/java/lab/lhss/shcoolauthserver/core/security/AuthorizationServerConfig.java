@@ -34,8 +34,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .scopes("write", "read")
                     .accessTokenValiditySeconds(20)
                     .refreshTokenValiditySeconds(60 * 60) // 1 Hour
-                    .and()
-                .withClient("checktoken")
+                .and()
+                    .withClient("backend-client")
+                    .secret(passwordEncoder.encode("backendclient123"))
+                    .authorizedGrantTypes("client_credentials")
+                    .scopes("write", "read")
+                .and()
+                    .withClient("checktoken")
                     .secret(passwordEncoder.encode("check123"));
     }
 
