@@ -33,6 +33,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .authorizedGrantTypes("password", "refresh_token")
                     .scopes("write", "read")
                     .accessTokenValiditySeconds(20)
+                    .refreshTokenValiditySeconds(60 * 60) // 1 Hour
                     .and()
                 .withClient("checktoken")
                     .secret(passwordEncoder.encode("check123"));
@@ -50,6 +51,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // Only for Password Flow, to analyze Resource Owner credentials
         endpoints
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .reuseRefreshTokens(false);
     }
 }
