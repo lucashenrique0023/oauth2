@@ -46,6 +46,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                     .scopes("write", "read")
                     .redirectUris("http://school-client-app")
                 .and()
+                    .withClient("schooladmin")
+                    .authorizedGrantTypes("implicit")
+                    .scopes("write", "read")
+                    .redirectUris("http://school-client2-app")
+                .and()
                     .withClient("checktoken")
                     .secret(passwordEncoder.encode("check123"));
     }
