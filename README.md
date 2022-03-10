@@ -58,3 +58,23 @@ How to test:
             --header 'Content-Type: application/x-www-form-urlencoded' \
             --header 'Cookie: JSESSIONID=34C10FDEBCEF3F916FC3ED950F4E08D6' \
             --data-urlencode 'grant_type=client_credentials'
+
+<h1>4. Configuring Authorization Code Grant Type </h1>
+
+      To Test:
+
+      4.1 Access Link from Browser:
+      http://localhost:8081/oauth/authorize?response_type=code&client_id=schoolanalytics&state=abc&redirect_uri=http://school-client-app
+
+      4.2 Get the Auth Code:
+      http://client-app/?code=uapag1&state=abc
+      * If using Client App test State equals state sent.
+
+      4.3 Request from Postman:
+      curl --location --request POST 'localhost:8081/oauth/token' \
+      --header 'Authorization: Basic c2Nob29sYW5hbHl0aWNzOnNjaG9vbDEyMw==' \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --header 'Cookie: JSESSIONID=EC5316C7389F74D8343CDA9484183410' \
+      --data-urlencode 'code=LqMDa3' \
+      --data-urlencode 'grant_type=authorization_code' \
+      --data-urlencode 'redirect_uri=http://school-client-app'
