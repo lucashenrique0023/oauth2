@@ -78,3 +78,18 @@ How to test:
       --data-urlencode 'code=LqMDa3' \
       --data-urlencode 'grant_type=authorization_code' \
       --data-urlencode 'redirect_uri=http://school-client-app'
+      
+<h1>5. Configuring Implicit Flow Grant Type [Legacy]</h1>
+
+      Similar to Authorization Code, but instead return a Authorization Code it returns directly an Access Token to the Client.
+
+      Testing:
+
+      5.1 Request from browser:
+      http://localhost:8081/oauth/authorize?response_type=token&client_id=schooladmin&state=abc&redirect_uri=http://school-client2-app
+
+      5.2 Grant Client Access
+
+      5.3 Take Access Token
+
+      5.4 Request for resource using postman
