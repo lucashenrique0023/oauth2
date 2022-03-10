@@ -93,3 +93,27 @@ How to test:
       5.3 Take Access Token
 
       5.4 Request for resource using postman
+      
+      
+<h1>6. Configuring Flow Authorization Code with PKCE</h1>
+
+      To test :
+
+      6.1 Request from browser :
+
+      * Generate Code Challenger Using:
+      * First Generate Code Verifier and then Code Challenger:
+      https://tonyxu-io.github.io/pkce-generator/
+
+      http://localhost:8081/oauth/authorize?response_type=code&client_id=schoolanalytics&redirect_uri=http://school-client-app&                             code_challenge=GTqZXhUmEGquThGNUTXLYLoyUaCtTuYsvgom6kY4fxE&code_challenge_method=s256
+
+      6.2 Request for access token with the Code Verifier:
+
+      curl --location --request POST 'localhost:8081/oauth/token' \
+      --header 'Authorization: Basic c2Nob29sYW5hbHl0aWNzOnNjaG9vbDEyMw==' \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --header 'Cookie: JSESSIONID=EC5316C7389F74D8343CDA9484183410' \
+      --data-urlencode 'code=H7J9yr' \
+      --data-urlencode 'grant_type=authorization_code' \
+      --data-urlencode 'redirect_uri=http://school-client-app' \
+      --data-urlencode 'code_verifier=ysJv71mF_jb31V-vPAgJT-OajkmhCp2VXIlp~V~7vLxr7.eWjWL8-ADQIVkY6QEt4C4LSZ.Rk8B4wiImV.oKU7FAF8e1MNTzB6vezW0LP6WASuBdbubSO21KP5Vl9Hlt'
