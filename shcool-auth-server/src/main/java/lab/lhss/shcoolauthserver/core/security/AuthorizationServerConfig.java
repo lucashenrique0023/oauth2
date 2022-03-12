@@ -71,7 +71,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerSecurityConfigurer security) {
         // isAuthenticated is a Spring Security Expression
         // Only Authenticated can check tokens. (use permitAll() for not authenticated)
-        security.checkTokenAccess("isAuthenticated()");
+        security
+                .checkTokenAccess("isAuthenticated()")
+                .tokenKeyAccess("permitAll()");
     }
 
     @Override
