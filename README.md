@@ -1,9 +1,9 @@
 # Oauth2
 
 - Learning and Implementing with Spring Security:
-      - Oauth2 Grant Types
-      - JWT Opaque/Transparent Tokens
-      - Stateful/Stateless Auth
+     <br> - Oauth2 Grant Types
+     <br> - JWT Opaque/Transparent Tokens
+     <br> - Stateful/Stateless Auth
  
 
 How to test:
