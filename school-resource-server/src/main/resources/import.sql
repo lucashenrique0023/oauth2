@@ -6,6 +6,7 @@ insert into STUDENT (id, name, email, password) values (4, 'Silva', 'silva@email
 insert into OPERATOR (id, name, email, password) values (1, 'searchoperator', 'searchoperator@email.com', '$2a$12$.Nx0UVgXapDanqQoNttMAOAtOHE6KHNuYq2/lL/Km1ZfbfAiuBAsK');
 insert into OPERATOR (id, name, email, password) values (2, 'allexceptdeleteoperator', 'allexceptdeleteoperator@email.com', '$2a$12$.Nx0UVgXapDanqQoNttMAOAtOHE6KHNuYq2/lL/Km1ZfbfAiuBAsK');
 insert into OPERATOR (id, name, email, password) values (3, 'alloperator', 'alloperator@email.com', '$2a$12$.Nx0UVgXapDanqQoNttMAOAtOHE6KHNuYq2/lL/Km1ZfbfAiuBAsK');
+insert into OPERATOR (id, name, email, password) values (4, 'nopermissionoperator', 'nopermissionoperator@email.com', '$2a$12$.Nx0UVgXapDanqQoNttMAOAtOHE6KHNuYq2/lL/Km1ZfbfAiuBAsK');
 
 insert into GROUPS (id, name) values (1, 'TRAINEE');
 insert into GROUPS (id, name) values (2, 'TEACHER');
