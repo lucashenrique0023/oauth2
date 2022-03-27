@@ -5,6 +5,7 @@ import lab.lhss.school.domain.model.Student;
 import lab.lhss.school.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,6 +20,8 @@ public class StudentController {
     @GetMapping("/{studentId}")
     @CheckSecurity.Student.Search
     public Student search(@PathVariable Long studentId) {
+
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
         return studentService.findById(studentId);
     }
 

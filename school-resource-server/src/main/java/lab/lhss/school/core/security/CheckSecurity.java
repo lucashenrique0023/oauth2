@@ -11,22 +11,22 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface CheckSecurity {
 
     @interface Student {
-        @PreAuthorize("hasAuthority('SEARCH_STUDENT')")
+        @PreAuthorize("hasAuthority('SCOPE_READ') and hasAuthority('SEARCH_STUDENT')")
         @Retention(RUNTIME)
         @Target(METHOD)
         @interface Search { }
 
-        @PreAuthorize("hasAuthority('CREATE_STUDENT')")
+        @PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('CREATE_STUDENT')")
         @Retention(RUNTIME)
         @Target(METHOD)
         @interface Create { }
 
-        @PreAuthorize("hasAuthority('EDIT_STUDENT')")
+        @PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('EDIT_STUDENT')")
         @Retention(RUNTIME)
         @Target(METHOD)
         @interface Edit { }
 
-        @PreAuthorize("hasAuthority('DELETE_STUDENT')")
+        @PreAuthorize("hasAuthority('SCOPE_WRITE') and hasAuthority('DELETE_STUDENT')")
         @Retention(RUNTIME)
         @Target(METHOD)
         @interface Delete { }
